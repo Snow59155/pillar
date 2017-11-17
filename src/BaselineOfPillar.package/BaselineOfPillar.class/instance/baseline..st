@@ -1,20 +1,43 @@
 baselines
 baseline: spec
 	<baseline>
+	
+	spec
+		for: #windows
+		do: [
+			spec
+				project: 'ProcessWrapper'
+					with: [ spec
+						className: #ConfigurationOfProcessWrapper;
+						versionString: '1.2';
+						repository: 'http://smalltalkhub.com/mc/Pharo/MetaRepoForPharo50/main' ].
+			spec
+				package: 'Pillar-Project'
+				with: [ spec requires: 'ProcessWrapper' ]
+	].
+
+	spec
+		for: #( unix osx )
+		do: [
+			spec
+				baseline: 'OSSubprocess'
+					with: [ spec
+						repository: 'github://marianopeck/OSSubprocess:v0.2.5/repository' ].
+			spec
+				package: 'Pillar-Project'
+				with: [ spec requires: 'OSSubprocess' ]
+	].
+	
 	spec
 		for: #common
 		do: [ spec blessing: #baseline.
 			spec repository: 'http://smalltalkhub.com/mc/Pier/Pillar/main/'.
 			spec
-				baseline: 'OSSubprocess'
-					with: [ spec
-						repository: 'github://marianopeck/OSSubprocess:v0.2.5/repository' ];
 				project: 'Mustache'
 					with: [ spec
 						className: #ConfigurationOfMustache;
 						versionString: '0.74';
-						repository: 'http://smalltalkhub.com/mc/NorbertHartl/Mustache/main'
-						 ];
+						repository: 'http://smalltalkhub.com/mc/NorbertHartl/Mustache/main' ];
 				project: 'Cocoon'
 					with: [ spec
 						className: #ConfigurationOfCocoon;
@@ -69,7 +92,7 @@ baseline: spec
 				package: 'Pillar-Pharo-Tools'
 					with: [ spec requires: #('Pillar-Model' 'All exporters') ];
 				package: 'Pillar-Project'
-					with: [ spec requires: #('Pillar-Model' 'All exporters' 'OSSubprocess') ];
+					with: [ spec requires: #('Pillar-Model' 'All exporters') ];
 				package: #'Pillar-Tests-Cli' with: [ spec requires: #('Pillar-Cli') ];
 				package: #'Pillar-Tests-ExporterAsciiDoc'
 					with: [ spec requires: #(#'Pillar-ExporterAsciiDoc' 'Pillar-Tests-ExporterCore') ];
