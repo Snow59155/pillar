@@ -23,37 +23,47 @@ Otherwise, these are other possible downloads:
 To install this version of pillar, clone this repository and call the `build.sh` script in it:
 
 ```bash
-$ git clone git@github.com:pillar-markup/pillar.git -b stable
-$ ./pillar/build/build.sh
+$ git clone git@github.com:pillar-markup/pillar.git -b newpipeline
+$ ./pillar/scripts/build.sh
 ```
 
-That will create a `build` directory in the working directory and build pillar in there. You can then proceed to install pillar where in your home:
+That will create a `build` directory in the working directory and build pillar in there. You can then proceed to install pillar where you want in your home directory.
+Here we place it as .pillar. 
 
 ```bash
-$ mv build ~/.pillar
+$ mv pillar ~/.pillar
 ```
-
 ### Setting up your environment
 
-Wether you downloaded an 
-
-And then add that directory to the `PILLAR_HOME` and `HOME` environment variables, for example, by modifying your `.bashrc` with
+Once you downloaded pillar and moved it to your home directory, 
+then add that directory to the `PILLAR_HOME` and `HOME` environment variables, for example, by modifying your `.bashrc` with
 
 ```bash
-export PILLAR_HOME="$HOME/.pillar"
+export PILLAR_HOME="$HOME/.pillar/build"
 export PATH="$PATH:$PILLAR_HOME"
 ```
 
+
 ## To compile a book in booklet format
+Now you should be ready compile the default 
 
 ```
-./pillar archetype book
-make spiral
+pillar archetype book
+pillar build pdf
 ```
+It will build a book in the folder _result. Pay attention for the moment 
+running it twice break and you should remove the _result to regenerate a book pdf. 
 
-## Usage in Developement
+## Manage your own book
+Now you can copy the following files and folder to your own repository. 
+Chapters, figures, pillar.conf, book.pillar, and _support
+These are the files that you should versionned. 
 
-Once built, you can use the artifact in the `build` directory to work. To finish setting up the development environment, do the following:
+
+
+## Usage for Pillar Developement
+Once built, you can use the artifacts (images, vm, scripts....) in the `build` directory to work.
+To finish setting up the development environment, do the following:
 - configure the iceberg repository (using the `add local repository` option pointing to your git root)
 - open your environment using `cd build && ./pharo-ui Pharo.image`
 

@@ -1,0 +1,4 @@
+execution
+doExecute
+	
+	^ block value

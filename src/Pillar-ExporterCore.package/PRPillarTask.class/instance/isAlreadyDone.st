@@ -1,0 +1,4 @@
+testing
+isAlreadyDone
+	
+	^ result isDone

@@ -1,0 +1,4 @@
+accessing
+dependencies
+
+	self subclassResponsibility

@@ -1,11 +1,15 @@
 {
 	"commentStamp" : "",
 	"super" : "PRPhase",
-	"category" : "Pillar-Project",
+	"category" : "Pillar-Project-Pdf",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
-	"instvars" : [ ],
+	"instvars" : [
+		"inputFile",
+		"baseDirectory",
+		"outputDirectory"
+	],
 	"name" : "PRRelativeReferenceTransformer",
 	"type" : "normal"
 }
